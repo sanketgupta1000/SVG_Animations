@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Additive and Accumulate example</title>
+</head>
+<body>
+    <!-- will try to use additive asnd accumulate as I will be using in my linkedlist visualizer -->
+
+    <svg width="1000" height="500px">
+        <text x="60"  y="60" fill="black" id="text1" text-anchor="middle">PTR</text>
+
+        <animate
+            xlink:href="#text1"
+            attributeType="XML"
+            attributeName="x"
+            from="0" to="40"
+            dur="1s"
+            repeatCount="5"
+            additive="sum"
+            accumulate="sum"
+            keyTimes="0; 0.8; 1"
+            values="0; 40; 40"
+        >
+        </animate>
+
+    </svg>
+</body>
+</html>

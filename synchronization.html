@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronizing Animations</title>
+</head>
+<body>
+    <svg width="1000" height="500">
+        
+        <!-- creating an orange circle -->
+        <circle id="orange-circle" fill="orange" cx="50" cy="50" r="50">
+        </circle>
+        
+        <!-- creating a blue circle -->
+        <circle id="blue-circle" cx="50" cy="170" r="50" fill="blue">
+        </circle>
+
+        <!-- applying animation on orange circle -->
+        <animate
+            xlink:href="#orange-circle"
+            attributeType="XML"
+            attributeName="cx"
+            from="50" to="950"
+            dur="1.5s"
+            begin="click"
+            id="orange-anim"
+        >
+        </animate>
+        
+        <!-- applying animation on blue circle -->
+        <!-- to be activated only 0.5s after animation on orange circle -->
+        <animate
+            xlink:href="#blue-circle"
+            attributeType="XML"
+            attributeName="cx"
+            from="50" to="950"
+            dur="1.5s"
+            begin="orange-anim.begin+0.5s"
+            id="blue-anim"
+        >
+        </animate>
+    </svg>
+</body>
+</html>

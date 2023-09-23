@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronizing based on repeat count</title>
+</head>
+<body>
+    <svg height="500" width="800">
+        <!-- creating two circles -->
+        <circle cx="50" cy="50" r="40" fill="orange" id="circle1"></circle>
+        <circle cx="50" cy="150" r="40" fill="orange" id="circle2"></circle>
+
+        <!-- to achieve: -->
+        <!-- circle1 moves from left to right indefinitely -->
+        <!-- case1: circle2 moves from left to right after two repeatitions of circle1's movement -->
+        <!-- case2: circle2 moves from left to right after every two repeatitions of circle1's movement -->
+
+        <!-- animate for circle1 -->
+        <animate
+            xlink:href="#circle1"
+            attributeType="XML"
+            attributeName="cx"
+            from="50" to="500"
+            dur="4s"
+            repeatCount="indefinite"
+            id="c1anim">
+        </animate>
+
+        <!-- conventional way for case1: begin fro animate element of circle2: begin="2*(whatever the duration of circle1's animation is)" -->
+
+        <!-- using inbuilt svg way: -->
+        <!-- <animate attributeType="XML"
+            xlink:href="#circle2"
+            attributeName="cx"
+            from="50" to="500"
+            dur="4s"
+            begin="c1anim.repeat(2)"
+            id="c2anim"
+        > -->
+
+        <!-- solution for case2, 8=2*duration of anim1 -->
+        <animate attributeType="XML"
+            xlink:href="#circle2"
+            attributeName="cx"
+            from="50" to="500"
+            dur="4s"
+            begin="c1anim.repeat(2); c2anim.end+8s"
+            id="c2anim"
+        >
+    </svg>
+</body>
+</html>

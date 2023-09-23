@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyTimes and values</title>
+</head>
+<body>
+    <svg width="1000px" height="800px">
+        <circle cx="500" cy="50" r="50" fill="orange" id="circle1"></circle>
+
+        <!-- to achieve: bouncing ball animation -->
+
+        <animate
+            xlink:href="#circle1"
+            attributeType="XML"
+            attributeName="cy"
+            from="50" to="50"
+            dur="1s"
+            repeatCount="indefinite"
+            keyTimes="0; 0.25; 0.4; 0.5; 0.6; 0.75; 1"
+            values="50; 200; 350; 500; 350; 200; 50"
+        >
+        </animate>
+
+        <!-- keyTimes specifies the "key times". Here, 0% or 0s, 25% or (25% of dur=0.25s), and so on are the keyTimes -->
+        <!-- values specifies the attribute value for the keyTimes. -->
+        <!-- Physically, this means to move our ball from 50 to 200 in 25% of time, from 200 to 350 in 15% of time, from 350 to 500 in 10% of time. -->
+        <!-- This leads to simulation pf gravity like thing, as the distance is same, but time decreases as ball comes down. -->
+    </svg>
+</body>
+</html>

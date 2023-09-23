@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Assignment</title>
+</head>
+<body>
+    <!-- Trying to use svg animation as I will be using in linked list visualizer project -->
+
+    <svg width="1000" height="500">
+        <!-- creating two circles -->
+        <circle cx="50" cy="50" r="40" id="c1" fill="orange"></circle>
+        <circle cx="150" cy="50" r="40" id="c2" fill="orange"></circle>
+
+        <!-- creating animation elements -->
+        <!-- using set element, since color is a non-numeric property -->
+        <set attributeType="XML"
+            attributeName="fill"
+            from="orange" to="blue"
+            begin="1s"
+            dur="1s"
+            xlink:href="#c1"
+            id="c1anim"
+        >
+        </set>
+        
+        <set attributeType="XML"
+            attributeName="fill"
+            from="orange" to="blue"
+            begin="c1anim.end"
+            dur="1s"
+            xlink:href="#c2"
+            id="c2anim"
+        >
+        </set>
+
+    </svg>
+</body>
+</html>

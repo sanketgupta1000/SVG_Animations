@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additive and Accumulate</title>
+</head>
+<body>
+    
+    <svg height="800px" width="1000px">
+        <circle cx="50" cy="50" r="50" fill="orange" id="circle1"></circle>
+        
+        <!-- additive attribute specifies whether we want to add offset to the attribute during the animation -->
+        <!-- if additive="sum", then, the from and to values are taken as offset to the attribute's initial value. -->
+        <!-- else if additive="replace", the from and to values are taken as absolute. -->
+
+        <!-- to move the circle from initial posiiton to, say, 200px away, we can do: -->
+        <!-- <animate attributeType="XML"
+            attributeName="cx"
+            from="0" to="200"
+            dur="2s"
+            fill="freeze"
+            additive="sum"
+            xlink:href="#circle1">
+        </animate> -->
+
+        <!-- accumulate attribute specifies whether the next repeatition of the animation should build upon the current one. -->
+        <animate attributeType="XML"
+            attributeName="cx"
+            from="0" to="100"
+            dur="2s"
+            repeatCount="5"
+            accumulate="sum"
+            fill="freeze"
+            xlink:href="#circle1">
+        </animate>
+        <!-- for the first repeatition/iteration, it takes circle from 0 to 100. Then after, adds 100 to circle's cx in every next repeatition -->
+        <!-- So, basically, after the first repeatition, it takes from and to and offset to the last iteration's final value -->
+        <!-- hence, good practice to use it with from="0". -->
+        <!-- if you want to start the animation from the initial value, also use additive="sum" -->
+    </svg>
+</body>
+</html>
